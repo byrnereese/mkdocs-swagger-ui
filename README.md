@@ -19,6 +19,13 @@ plugins:
       outfile: 'docs/api.md'
 ```
 
+Add the CSS file to your mkdocs.yml:
+
+```yaml
+extra_css:
+- https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.43.0/swagger-ui.css
+```
+
 ### Options
 
 - `spec_url`: Sets the URL to the Swagger specification for the RingCentral platform. This should default to the official URL. Override this for development purposes only. 
@@ -29,7 +36,7 @@ More information about plugins in the [MkDocs documentation][mkdocs-plugins].
 
 ## How the plugin works
 
-This plugin works by generating a markdown file prior to the rest of a mkdocs project being built. In other words, as soon as mkdocs is started, this plugin downloads a spec file, parses it, generates a markdown file, and saves that file into the documentation tree. Then to make the generated page appear in your documentation, you add the file to your `pages` tree. For example:
+This plugin works by loading a different template and markdown file that renders a Swagger UI page in a file's place. The key to making this work is to ensure that the `outfile` plugin config value matches the filename of some file in your documentation tree, as shown below. When mkdocs encounters this file and if the file matches the `outfile` then the plugin will render a Swagger UI in place of whatever file may already be in place. In other words, the contents of the file are completed ignored, and replaced by the output of this plugin. 
 
 ```yaml
 plugins:
