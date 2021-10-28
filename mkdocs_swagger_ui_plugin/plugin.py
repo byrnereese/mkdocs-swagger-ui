@@ -16,6 +16,7 @@ class SwaggerUIPlugin(BasePlugin):
     config_scheme = (
         ('do_nothing', mkdocs.config.config_options.Type(str, default='')),
         ('spec_url', config_options.Type(str, default='https://netstorage.ringcentral.com/dpw/api-reference/specs/rc-platform.yml')),
+        ('show_schema_by_default', config_options.Type(bool, default=False)),
     )
 
     def __init__(self):
@@ -24,6 +25,9 @@ class SwaggerUIPlugin(BasePlugin):
 
     def generate_page_contents(self):
         spec_url    = self.config['spec_url']
+        schema_model_expand_depth = 0
+        if self.config['show_schema_by_default']: schema_model_expand_depth = 1
+
 
         print("INFO    -  Generating API index for spec: " + spec_url)
         try:
@@ -89,6 +93,7 @@ class SwaggerUIPlugin(BasePlugin):
                         spec: spec,
                         dom_id: '#swagger-ui',
                         deepLinking: true,
+                        defaultModelsExpandDepth: %d,
                         presets: [
                         SwaggerUIBundle.presets.apis,
                         SwaggerUIStandalonePreset
@@ -114,7 +119,7 @@ class SwaggerUIPlugin(BasePlugin):
         """
         print("Writing specs...")
         file = open('docs/api-index.html', 'w+')
-        file.write(TEMPLATE % json.dumps(data))
+        file.write(TEMPLATE % (json.dumps(data), schema_model_expand_depth))
         file.close()
         return
     

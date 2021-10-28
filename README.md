@@ -1,4 +1,4 @@
-# mkdocs-swagger-ui
+# mkdocs-swagger-ui-html
 
 A MkDocs plugin created to help developer embed API Reference documentation into a mkdocs powered website. API specs data will be rendered with [Swagger Editor](https://editor.swagger.io/)-like style.
 
@@ -6,7 +6,7 @@ A MkDocs plugin created to help developer embed API Reference documentation into
 
 1. Install the plugin using pip:
 
-`pip install mkdocs-swagger-ui`
+`pip install mkdocs-swagger-ui-html`
 
 2. Copy over `docs/api-index.md` to `docs/api-index.md` under your project (assuming your mkdocs working path is `{root}/docs`)
 

@@ -4,13 +4,13 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setup(
-    name='mkdocs-swagger-ui',
-    version='0.1.0',
+    name='mkdocs-swagger-ui-html',
+    version='0.1.1',
     description='An MkDocs plugin to generate a markdown file containing an API reference built using Swagger UI from a base OAS3 specification.',
     long_description=long_description,
     long_description_content_type="text/markdown",
     keywords='mkdocs swagger api documentation',
-    url='https://github.com/byrnereese/mkdocs-swagger-ui',
+    url='https://github.com/byrnereese/mkdocs-swagger-ui/tree/StructureBreakingChange',
     author='Byrne Reese',
     author_email='byrne@majordojo.com',
     license='MIT',
@@ -36,7 +36,7 @@ setup(
     packages=find_packages(),
     entry_points={
         'mkdocs.plugins': [
-            'swagger-ui = mkdocs_swagger_ui_plugin.plugin:SwaggerUIPlugin'
+            'swagger-ui-html = mkdocs_swagger_ui_plugin.plugin:SwaggerUIPlugin'
         ]
     }
 )
