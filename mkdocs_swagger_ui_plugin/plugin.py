@@ -12,7 +12,8 @@ import mkdocs.structure.files
 import yaml
 import json
 import markdown
-from jinja2 import Environment, FileSystemLoader, select_autoescape, Markup
+from jinja2 import Environment, FileSystemLoader, select_autoescape
+from markupsafe import Markup
     
 import requests
 from urllib.parse import urlparse

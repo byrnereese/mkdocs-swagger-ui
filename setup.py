@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name='mkdocs-swagger-ui',
-    version='0.1.0',
+    version='0.1.1',
     description='An MkDocs plugin to generate a markdown file containing an API reference built using Swagger UI from a base OAS3 specification.',
     long_description=long_description,
     long_description_content_type="text/markdown",
