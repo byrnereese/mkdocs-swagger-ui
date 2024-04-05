@@ -36,10 +36,12 @@ class SwaggerUIPlugin(BasePlugin):
     def generate_page_contents(self):
         spec_url    = self.config['spec_url']
         tmpl_url    = self.config['template']
+        cur_dir     = os.path.dirname(__file__)
         print("INFO     -  Generating swagger-ui for spec: " + spec_url)
         print("DEBUG    -  template: " + tmpl_url)
+        print("DEBUG    -  directory: " + cur_dir)
         env = Environment(
-            loader=FileSystemLoader('tmpl'),
+            loader=FileSystemLoader(['tmpl',os.path.join(cur_dir,'tmpl')]),
             autoescape=select_autoescape(['html', 'xml'])
         )
         md = markdown.Markdown()
@@ -47,6 +49,7 @@ class SwaggerUIPlugin(BasePlugin):
   
         template = env.get_template( tmpl_url )
         tmpl_out = template.render( spec=spec_url )
+        print("DEBUG    - " + tmpl_out)
         return tmpl_out
     
     def on_config(self, config):
