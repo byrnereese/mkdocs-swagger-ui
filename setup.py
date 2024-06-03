@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name='mkdocs-swagger-ui',
-    version='0.2.1',
+    version='0.2.3',
     description='An MkDocs plugin to generate a markdown file containing an API reference built using Swagger UI from a base OAS3 specification.',
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -34,6 +34,7 @@ setup(
         'Programming Language :: Python :: 3.7'
     ],
     packages=find_packages(),
+    package_data={'': ['swagger.md.tmpl']},
     entry_points={
         'mkdocs.plugins': [
             'swagger-ui = mkdocs_swagger_ui_plugin.plugin:SwaggerUIPlugin'
