@@ -38,8 +38,8 @@ class SwaggerUIPlugin(BasePlugin):
         tmpl_url    = self.config['template']
         cur_dir     = os.path.dirname(__file__)
         print("INFO     -  Generating swagger-ui for spec: " + spec_url)
-        print("DEBUG    -  template: " + tmpl_url)
-        print("DEBUG    -  directory: " + cur_dir)
+        #print("DEBUG    -  template: " + tmpl_url)
+        #print("DEBUG    -  directory: " + cur_dir)
         env = Environment(
             loader=FileSystemLoader(['tmpl',os.path.join(cur_dir,'tmpl')]),
             autoescape=select_autoescape(['html', 'xml'])
@@ -49,7 +49,7 @@ class SwaggerUIPlugin(BasePlugin):
   
         template = env.get_template( tmpl_url )
         tmpl_out = template.render( spec=spec_url )
-        print("DEBUG    - " + tmpl_out)
+        #print("DEBUG    - " + tmpl_out)
         return tmpl_out
     
     def on_config(self, config):
